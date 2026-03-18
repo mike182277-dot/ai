@@ -12,7 +12,6 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ═══ THEME VARIABLES ═══ */
 :root {
   --bg: #0c0e12; --bg-card: #14171d; --bg-alt: #111520;
   --text: #e8e6e1; --text-dim: #9a9890; --text-muted: #5c5a55;
@@ -20,7 +19,6 @@
   --coral: #ff6b5a;
   --nav-bg: rgba(12,14,18,0.85);
   --border: rgba(255,255,255,0.04); --border-light: rgba(255,255,255,0.06);
-  --card-hover: rgba(255,255,255,0.08);
   --radius: 16px; --radius-sm: 10px;
 }
 [data-theme="light"] {
@@ -30,55 +28,36 @@
   --coral: #e05545;
   --nav-bg: rgba(245,244,240,0.9);
   --border: rgba(0,0,0,0.06); --border-light: rgba(0,0,0,0.08);
-  --card-hover: rgba(0,0,0,0.04);
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
 body { font-family: 'Onest', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s; }
 .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-.container-wide { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
-section { padding: 80px 0; }
+.container-wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+section { padding: 72px 0; }
 h1, h2, h3 { font-family: 'Unbounded', sans-serif; line-height: 1.25; }
 
-/* ═══ NAV ═══ */
+/* NAV */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 0; background: var(--nav-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: background 0.3s; }
 nav .container-wide { display: flex; justify-content: space-between; align-items: center; }
 .nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 14px; }
 .nav-cta { padding: 10px 22px; background: var(--accent); color: #fff; font-family: 'Onest', sans-serif; font-weight: 600; font-size: 0.82rem; border: none; border-radius: 100px; cursor: pointer; text-decoration: none; transition: all 0.25s; }
-[data-theme="light"] .nav-cta { color: #fff; }
 .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 30px var(--accent-glow); }
 
-/* Theme toggle — iOS style */
-.nav-right { display: flex; align-items: center; gap: 14px; }
-.theme-toggle {
-  width: 52px; height: 30px; border-radius: 15px;
-  border: none; background: #3a3a3c;
-  cursor: pointer; position: relative;
-  transition: background 0.3s; flex-shrink: 0;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
-}
-.theme-toggle::after {
-  content: ''; position: absolute;
-  top: 2px; left: 2px;
-  width: 26px; height: 26px; border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-[data-theme="light"] .theme-toggle {
-  background: #00c9a7;
-}
-[data-theme="light"] .theme-toggle::after {
-  transform: translateX(22px);
-}
+/* iOS Toggle */
+.theme-toggle { width: 52px; height: 30px; border-radius: 15px; border: none; background: #3a3a3c; cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
+.theme-toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+[data-theme="light"] .theme-toggle { background: var(--accent); }
+[data-theme="light"] .theme-toggle::after { transform: translateX(22px); }
 .theme-icon { position: absolute; top: 6px; font-size: 0.85rem; line-height: 1; pointer-events: none; z-index: 1; }
 .theme-icon.moon { left: 7px; }
 .theme-icon.sun { right: 7px; }
 
-/* ═══ HERO ═══ */
+/* HERO */
 .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 70px; padding-bottom: 40px; position: relative; overflow: hidden; background: linear-gradient(165deg, var(--bg) 0%, var(--bg-alt) 50%, var(--bg) 100%); }
 .hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 500px; height: 500px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); filter: blur(80px); pointer-events: none; }
-.hero-inner { position: relative; z-index: 2; max-width: 680px; }
+.hero-inner { position: relative; z-index: 2; }
 .hero-photo { width: 140px; height: 140px; border-radius: 50%; border: 2px solid rgba(0,201,167,0.25); overflow: hidden; margin-bottom: 24px; }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 .hero-greeting { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 16px; }
@@ -91,7 +70,7 @@ nav .container-wide { display: flex; justify-content: space-between; align-items
 .btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; background: transparent; color: var(--text-dim); font-family: 'Onest', sans-serif; font-weight: 500; font-size: 0.95rem; border: 1px solid var(--border-light); border-radius: 100px; cursor: pointer; text-decoration: none; transition: all 0.3s; }
 .btn-ghost:hover { border-color: var(--accent); color: var(--text); }
 
-/* ═══ STORY ═══ */
+/* STORY */
 .story { background: var(--bg); transition: background 0.3s; }
 .story-alt { background: var(--bg-card); transition: background 0.3s; }
 .story-block { margin-bottom: 48px; }
@@ -101,22 +80,20 @@ nav .container-wide { display: flex; justify-content: space-between; align-items
 .story .highlight { color: var(--accent); }
 .divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--accent), transparent); margin: 56px 0; border-radius: 2px; }
 
-/* Screenshot */
 .screenshot-wrap { margin: 28px 0; border-radius: var(--radius); border: 1px solid rgba(0,201,167,0.15); background: var(--bg-card); overflow: hidden; position: relative; }
 .screenshot-wrap::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(12,14,18,0.2) 0%, rgba(0,201,167,0.04) 50%, rgba(12,14,18,0.4) 100%); pointer-events: none; }
 [data-theme="light"] .screenshot-wrap::after { background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.2) 100%); }
 .screenshot-wrap img { width: 100%; height: auto; display: block; opacity: 0.9; }
 .screenshot-caption { position: relative; z-index: 2; padding: 10px 16px; font-size: 0.78rem; color: var(--accent); text-align: center; background: var(--bg-card); border-top: 1px solid var(--border); }
 
-/* Usecase tags */
 .usecase-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .uc-tag { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 100px; font-size: 0.82rem; color: var(--text-dim); white-space: nowrap; transition: all 0.3s; }
 .uc-tag:hover { border-color: rgba(0,201,167,0.3); color: var(--text); }
 
-/* Case stories */
-.case-story { padding: 24px 28px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); margin: 16px 0; transition: all 0.3s; }
+/* CASES */
+.cases-grid { display: grid; gap: 16px; }
+.case-story { padding: 24px 28px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.3s; }
 [data-theme="light"] .case-story { background: var(--bg-card); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-.case-story:hover { border-color: var(--card-hover); }
 .case-story-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
 .case-story-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 0.8rem; color: #fff; flex-shrink: 0; }
 .case-story:nth-child(1) .case-story-avatar { background: linear-gradient(135deg, var(--accent), #00e6be); }
@@ -128,7 +105,7 @@ nav .container-wide { display: flex; justify-content: space-between; align-items
 .case-story p { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 10px; line-height: 1.6; }
 .case-story-result { font-size: 0.88rem; color: var(--accent); font-weight: 500; }
 
-/* Tools marquee */
+/* TOOLS */
 .tools-strip { background: var(--bg-card); padding: 40px 0; overflow: hidden; transition: background 0.3s; }
 .tools-label { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
 .marquee-wrap { position: relative; }
@@ -140,7 +117,7 @@ nav .container-wide { display: flex; justify-content: space-between; align-items
 .marquee-item .m-dot { width: 7px; height: 7px; border-radius: 50%; }
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-/* Audience */
+/* AUDIENCE */
 .audience { background: var(--bg-card); transition: background 0.3s; }
 .audience-title { font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 600; text-align: center; margin-bottom: 36px; }
 .audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -156,15 +133,14 @@ nav .container-wide { display: flex; justify-content: space-between; align-items
 .audience-item:last-child { border-bottom: none; }
 .audience-note { text-align: center; color: var(--text-muted); font-size: 0.84rem; margin-top: 24px; }
 
-/* How + Price */
+/* HOW + PRICE */
 .how-price { background: var(--bg); transition: background 0.3s; }
 .how-title { font-size: clamp(1.2rem, 3vw, 1.7rem); font-weight: 600; margin-bottom: 36px; }
 .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.how-step { padding: 24px 22px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); transition: background 0.3s; }
+.how-step { padding: 24px 22px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.3s; }
 .how-step-num { font-family: 'Unbounded', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.1em; }
 .how-step h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
 .how-step p { font-size: 0.84rem; color: var(--text-dim); line-height: 1.55; }
-
 .price-box { max-width: 540px; margin: 44px auto 0; padding: 40px; background: var(--bg-card); border: 1px solid rgba(0,201,167,0.15); border-radius: 20px; text-align: center; position: relative; overflow: hidden; transition: background 0.3s; }
 .price-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--coral)); }
 .price-num { font-family: 'Unbounded', sans-serif; font-size: 2.5rem; font-weight: 700; margin: 10px 0 6px; }
@@ -185,62 +161,59 @@ nav .container-wide { display: flex; justify-content: space-between; align-items
 .cta-btn:hover { border-color: var(--accent); color: var(--accent); }
 .cta-btn-accent { color: var(--text); font-weight: 600; border-color: rgba(0,201,167,0.2); }
 
-footer { padding: 28px 0; border-top: 1px solid var(--border); text-align: center; transition: border-color 0.3s; }
+footer { padding: 28px 0; border-top: 1px solid var(--border); text-align: center; }
 footer p { font-size: 0.76rem; color: var(--text-muted); }
 
-/* ═══ RESPONSIVE ═══ */
+/* ═══ MOBILE (<768px) ═══ */
 @media (max-width: 768px) {
   section { padding: 48px 0; }
-  .container { padding: 0 16px; }
+  .container, .container-wide { padding: 0 16px; }
   .hero { min-height: auto; padding: 85px 0 36px; }
   .hero h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); margin-bottom: 14px; }
-  .hero-text { font-size: 0.9rem; margin-bottom: 14px; line-height: 1.65; }
+  .hero-text { font-size: 0.9rem; margin-bottom: 14px; }
   .hero-photo { width: 100px; height: 100px; margin-bottom: 18px; }
   .hero-greeting { font-size: 0.92rem; margin-bottom: 10px; }
-  .hero-actions { flex-direction: column; gap: 10px; margin-top: 8px; }
+  .hero-actions { flex-direction: column; gap: 10px; }
   .hero-actions a { text-align: center; justify-content: center; padding: 13px 24px; font-size: 0.9rem; }
   .story h2 { font-size: 1.15rem; margin-bottom: 16px; }
-  .story p { font-size: 0.88rem; margin-bottom: 12px; line-height: 1.65; }
+  .story p { font-size: 0.88rem; margin-bottom: 12px; }
   .story-block { margin-bottom: 32px; }
   .divider { margin: 36px 0; }
+  .cases-grid { grid-template-columns: 1fr; }
   .audience-grid { grid-template-columns: 1fr; gap: 14px; }
   .audience-col { padding: 20px; }
-  .audience-title { font-size: 1.1rem; margin-bottom: 24px; }
   .how-steps { grid-template-columns: 1fr; gap: 10px; }
-  .how-step { padding: 20px 18px; }
-  .how-title { font-size: 1.1rem; margin-bottom: 24px; }
   .usecase-tags { gap: 6px; }
   .uc-tag { padding: 6px 12px; font-size: 0.76rem; }
-  .price-box { padding: 24px 18px; margin-top: 32px; }
+  .price-box { padding: 24px 18px; }
   .price-num { font-size: 1.8rem; }
   .cta-section { padding: 56px 0; }
-  .cta-inner h2 { font-size: 1.2rem; margin-bottom: 20px; }
-  .cta-buttons { flex-direction: column; gap: 10px; max-width: 300px; margin: 0 auto; }
-  .cta-btn { text-align: center; padding: 13px 20px; }
-  .case-story { padding: 18px; margin: 12px 0; }
-  .case-story p { font-size: 0.84rem; }
+  .cta-buttons { flex-direction: column; max-width: 280px; margin: 0 auto; }
+  .cta-btn { text-align: center; }
+  .case-story { padding: 18px; }
   .tools-strip { padding: 28px 0; }
-  .screenshot-wrap { margin: 20px 0; }
-  .nav-logo { font-size: 0.72rem; }
-  .nav-cta { padding: 8px 16px; font-size: 0.78rem; }
   .theme-toggle { width: 46px; height: 26px; border-radius: 13px; }
   .theme-toggle::after { width: 22px; height: 22px; }
   [data-theme="light"] .theme-toggle::after { transform: translateX(20px); }
-  .theme-icon { font-size: 0.75rem; top: 5px; }
   .nav-right { gap: 10px; }
-}
-@media (max-width: 380px) {
-  .hero h1 { font-size: 1.35rem; }
-  .nav-logo { font-size: 0.65rem; letter-spacing: 0.04em; }
-  .nav-cta { padding: 7px 12px; font-size: 0.72rem; }
+  .nav-logo { font-size: 0.72rem; }
+  .nav-cta { padding: 8px 16px; font-size: 0.78rem; }
 }
 
-/* ═══ DESKTOP ENHANCEMENTS ═══ */
-@media (min-width: 769px) {
-  .case-story { display: grid; grid-template-columns: 1fr; }
+/* ═══ DESKTOP (>900px) ═══ */
+@media (min-width: 901px) {
+  .container { max-width: 900px; }
+  .hero .container { max-width: 1100px; }
+  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+  .hero-content { order: 1; }
+  .hero-aside { order: 2; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .hero-photo { width: 200px; height: 200px; margin-bottom: 0; }
+  .hero-greeting { grid-column: 1 / -1; order: 0; }
+  .cases-grid { grid-template-columns: 1fr 1fr; }
   .case-story:hover { transform: translateY(-2px); box-shadow: 0 4px 20px var(--accent-glow); }
   .how-step:hover { border-color: rgba(0,201,167,0.2); transform: translateY(-2px); }
   .uc-tag:hover { transform: translateY(-1px); }
+  .story p { font-size: 1.05rem; }
 }
 </style>
 </head>
@@ -259,14 +232,18 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
 
 <section class="hero"><div class="container">
   <div class="hero-inner">
-    <div class="hero-photo"><img src="photo.jpg" alt="Михаил Качалкин"></div>
-    <p class="hero-greeting">Привет. Я Михаил Качалкин.</p>
-    <h1>Я <em>встраиваю</em> AI<br>в жизнь людей</h1>
-    <p class="hero-text">Я эксперт по стратегическому маркетингу и пользовательскому опыту. Последние 20 лет я успешно работаю с корпоративными клиентами — Сбер, Аскона, ВТБ, Яндекс, Ростелеком и&nbsp;другие — провожу стратегические сессии, развиваю клиентский сервис, улучшаю эффективность команд. И мне это нравится. Это мой мир.</p>
-    <p class="hero-text">Но последние полгода у меня появилась параллельная история, которой я&nbsp;не&nbsp;ожидал: <strong>реальное применение AI-моделей в повседневной жизни и рабочих процессах человека.</strong></p>
-    <div class="hero-actions">
-      <a href="https://t.me/KachalkinPRO" target="_blank" class="btn-primary">Написать в мессенджер →</a>
-      <a href="#story" class="btn-ghost">Расскажу подробнее ↓</a>
+    <div class="hero-content">
+      <p class="hero-greeting">Привет. Меня зовут Михаил Качалкин.</p>
+      <h1>Встраиваю <em>AI</em><br>в жизнь людей</h1>
+      <p class="hero-text">Последние 20 лет успешно работаю с корпоративными клиентами — Сбер, Аскона, ВТБ, Яндекс, Ростелеком и&nbsp;другие — провожу стратегические сессии, развиваю клиентский сервис, улучшаю эффективность команд. И мне это нравится. Это то, что делаю лучше всего.</p>
+      <p class="hero-text">Но последние полгода появилась параллельная история, которой не ожидал: <strong>реальное применение AI-моделей в повседневной жизни и рабочих процессах человека.</strong></p>
+      <div class="hero-actions">
+        <a href="https://t.me/KachalkinPRO" target="_blank" class="btn-primary">Написать в мессенджер →</a>
+        <a href="#story" class="btn-ghost">Расскажу подробнее ↓</a>
+      </div>
+    </div>
+    <div class="hero-aside">
+      <div class="hero-photo"><img src="photo.jpg" alt="Михаил Качалкин"></div>
     </div>
   </div>
 </div></section>
@@ -274,27 +251,27 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
 <section class="story" id="story"><div class="container">
   <div class="story-block">
     <h2>Началось с себя</h2>
-    <p>В 2022-м, когда появились первые модели, я был одним из первых платных подписчиков. Не потому что технарь — я вообще не программист и не умею писать код. Просто стало интересно: а что, если это не игрушка, а реальный рабочий инструмент?</p>
-    <p>Оказалось — реальный. Я начал использовать нейросети каждый день: готовить коммерческие предложения, анализировать встречи, собирать презентации, даже строить веб-приложения. AI стал моим вторым интеллектом — таким <strong class="highlight">неокортексом</strong>, который всегда рядом.</p>
+    <p>В 2022-м, когда появились первые модели, был одним из первых платных подписчиков. Не потому что технарь — вообще не программист и не умею писать код. Просто стало интересно: а что, если это не игрушка, а реальный рабочий инструмент?</p>
+    <p>Оказалось — реальный. Начал использовать нейросети каждый день: готовить коммерческие предложения, анализировать встречи, собирать презентации, даже строить веб-приложения. AI стал вторым интеллектом — таким <strong class="highlight">неокортексом</strong>, который всегда рядом.</p>
     <div class="screenshot-wrap">
       <img src="screen.jpg" alt="Рабочий экран с AI-инструментами">
-      <div class="screenshot-caption">Мой обычный рабочий экран — больше 30 AI-сервисов под рукой</div>
+      <div class="screenshot-caption">Обычный рабочий экран — больше 30 AI-сервисов под рукой</div>
     </div>
   </div>
   <div class="divider"></div>
   <div class="story-block">
     <h2>А потом начались вопросы</h2>
-    <p>На созвонах и встречах люди стали замечать, как я работаю: <em>«Миш, а что это за агент у тебя в созвоне? А как ты делаешь расшифровки? А что за презентация — ты её сам собрал? А как ты так быстро КП подготовил?»</em></p>
+    <p>На созвонах и встречах люди стали замечать, как работаю: <em>«Миш, а что это за агент у тебя в созвоне? А как ты делаешь расшифровки? А что за презентация — ты её сам собрал? А как ты так быстро КП подготовил?»</em></p>
     <p>И полгода назад с таким запросом пришла Эльвира: <em>«Михаил, а помогите всё это разобрать и собрать — чтобы у меня работало как у вас.»</em></p>
-    <p>Мы всё сделали. Потом пришёл ещё один человек — и снова с теми же вопросами. Потом ещё. И ещё.</p>
-    <p>И вот после пятого раза я понял: <strong>мой опыт — не программиста, не айтишника, а обычного человека, который сам активно использует AI каждый день — может быть полезен другим.</strong> Экспертам, предпринимателям, руководителям, просто активным в своей работе людям.</p>
-    <p>Потому что у людей проблема не в том, что они мало знают. А в том, что между «интересно» и «работает» — огромная пропасть. Особенно в России, где половина сервисов заблокирована, оплата непонятна, а из 50 роликов на YouTube ни один не отвечает на вопрос: <strong>«Как это применить к моей конкретной работе?»</strong></p>
+    <p>Всё сделали. Потом пришёл ещё один человек — и снова с теми же вопросами. Потом ещё. И ещё.</p>
+    <p>И вот после пятого раза стало понятно: <strong>опыт не программиста, не айтишника, а обычного человека, который сам активно использует AI каждый день — может быть полезен другим.</strong> Экспертам, предпринимателям, руководителям, просто активным в работе людям.</p>
+    <p>Потому что проблема не в том, что люди мало знают. А в том, что между «интересно» и «работает» — огромная пропасть. Особенно в России, где половина сервисов заблокирована, оплата непонятна, а из 50 роликов на YouTube ни один не отвечает на вопрос: <strong>«Как это применить к конкретной работе?»</strong></p>
   </div>
   <div class="divider"></div>
   <div class="story-block">
-    <h2>Что я делаю</h2>
-    <p>Я сажусь рядом с человеком — или подключаюсь онлайн — и за один день встраиваю AI в его жизнь. Не учу теории. Не читаю лекций. А погружаюсь в то, как устроена его работа, какие задачи он решает каждый день — и собираю под это <strong>персональную AI-среду</strong>.</p>
-    <p>Мы вместе разбираемся, где AI даст максимальный эффект. Вместе делаем первые проекты на реальных задачах. Вместе выстраиваем сценарии, пространства, привычки. А потом ещё две недели я на связи — пока AI не станет естественной частью рутины.</p>
+    <h2>Что происходит</h2>
+    <p>Сажусь рядом с человеком — или подключаюсь онлайн — и за один день встраиваю AI в его жизнь. Не учу теории. Не читаю лекций. А погружаюсь в то, как устроена его работа, какие задачи решает каждый день — и собираю под это <strong>персональную AI-среду</strong>.</p>
+    <p>Вместе разбираемся, где AI даст максимальный эффект. Вместе делаем первые проекты на реальных задачах. Вместе выстраиваем сценарии, пространства, привычки. А потом ещё две недели на связи — пока AI не станет естественной частью рутины.</p>
     <p style="color:var(--text-muted);font-size:0.9rem;margin-top:24px;margin-bottom:12px;">На чём это работает в реальной жизни:</p>
     <div class="usecase-tags">
       <span class="uc-tag">🎙 Расшифровка совещаний</span>
@@ -306,22 +283,24 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
       <span class="uc-tag">👥 Анализ конкурентов</span>
       <span class="uc-tag">✍️ Тексты и контент</span>
     </div>
-    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:14px;">AI будет с вами везде — на телефоне, ноутбуке, в мессенджерах, в браузере.</p>
+    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:14px;">AI будет везде — на телефоне, ноутбуке, в мессенджерах, в браузере.</p>
   </div>
 </div></section>
 
 <section class="story story-alt"><div class="container">
   <div class="story-block">
     <h2>Вот реальные истории последних 6 месяцев</h2>
-    <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">Э</div><div><div class="case-story-name">Эльвира</div><div class="case-story-role">Руководитель рекламного агентства</div></div></div><p>Хотела начать использовать AI, но не знала с чего. Была в другом городе — всё делали удалённо. Это был мой первый клиент.</p><div class="case-story-result">Через месяц она сама — без навыков программирования — собрала рабочее приложение для учёта фондов компании. С помощью нейросети.</div></div>
-    <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">О</div><div><div class="case-story-name">Олеся</div><div class="case-story-role">Бизнес-тренер, автор книги</div></div></div><p>Нужно было завершить книгу, быстрее собирать программы для мероприятий, создать AI-помощника для работы с командами.</p><div class="case-story-result">Выстроила систему «созвон → транскрибация → анализ в AI». Освоила таблицы, собирает презентации, проводит исследования — раньше это занимало дни, теперь часы.</div></div>
-    <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">Н</div><div><div class="case-story-name">Настя</div><div class="case-story-role">Сотрудник госбанка</div></div></div><p>Жёсткие корпоративные ограничения безопасности. Казалось, что AI в её ситуации невозможен.</p><div class="case-story-result">Нашли модель, при которой всё работает на личных устройствах — без риска для корпоративных данных. Отдельный вызов и отдельная гордость.</div></div>
-    <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">Д</div><div><div class="case-story-name">Дмитрий</div><div class="case-story-role">Бизнес-тренер, 30+ лет опыта</div></div></div><p>Пришёл из FOMO: «Вдруг я упускаю что-то важное.» Основная работа — глубинные интервью с клиентами и командами.</p><div class="case-story-result">Выстроили полный цикл: запись на Plaud → транскрибация → анализ в AI. Нейросеть предлагает идеи по проектам и каждую неделю собирает дайджест конкурентов.</div></div>
+    <div class="cases-grid">
+      <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">Э</div><div><div class="case-story-name">Эльвира</div><div class="case-story-role">Руководитель рекламного агентства</div></div></div><p>Хотела начать использовать AI, но не знала с чего. Была в другом городе — всё делали удалённо. Первый клиент.</p><div class="case-story-result">Через месяц сама — без навыков программирования — собрала рабочее приложение для учёта фондов компании. С помощью нейросети.</div></div>
+      <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">О</div><div><div class="case-story-name">Олеся</div><div class="case-story-role">Бизнес-тренер, автор книги</div></div></div><p>Нужно было завершить книгу, быстрее собирать программы для мероприятий, создать AI-помощника для работы с командами.</p><div class="case-story-result">Выстроила систему «созвон → транскрибация → анализ в AI». Освоила таблицы, собирает презентации, проводит исследования — раньше это занимало дни, теперь часы.</div></div>
+      <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">Н</div><div><div class="case-story-name">Настя</div><div class="case-story-role">Сотрудник госбанка</div></div></div><p>Жёсткие корпоративные ограничения безопасности. Казалось, что AI в такой ситуации невозможен.</p><div class="case-story-result">Нашли модель, при которой всё работает на личных устройствах — без риска для корпоративных данных. Отдельный вызов и отдельная гордость.</div></div>
+      <div class="case-story"><div class="case-story-header"><div class="case-story-avatar">Д</div><div><div class="case-story-name">Дмитрий</div><div class="case-story-role">Бизнес-тренер, 30+ лет опыта</div></div></div><p>Пришёл из FOMO: «Вдруг упускаю что-то важное.» Основная работа — глубинные интервью с клиентами и командами.</p><div class="case-story-result">Выстроили полный цикл: запись на Plaud → транскрибация → анализ в AI. Нейросеть предлагает идеи по проектам и каждую неделю собирает дайджест конкурентов.</div></div>
+    </div>
   </div>
 </div></section>
 
 <section class="tools-strip">
-  <div class="tools-label">Инструменты, которые становятся частью вашей работы</div>
+  <div class="tools-label">Инструменты, которые становятся частью работы</div>
   <div class="marquee-wrap"><div class="marquee-track">
     <div class="marquee-item"><span class="m-dot" style="background:#00c9a7"></span> Claude</div>
     <div class="marquee-item"><span class="m-dot" style="background:#74aa9c"></span> ChatGPT</div>
@@ -348,44 +327,44 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
   <h2 class="audience-title">Для кого это — и для кого точно нет</h2>
   <div class="audience-grid">
     <div class="audience-col yes">
-      <h3>✓ Вам подойдёт, если</h3>
+      <h3>✓ Подойдёт, если</h3>
       <div class="audience-item">Вы руководитель, предприниматель или эксперт — и хотите начать использовать AI по-настоящему</div>
-      <div class="audience-item">Вы пробовали ChatGPT пару раз, но не поняли, как это встроить в свою работу</div>
-      <div class="audience-item">Вам некогда проходить двухмесячные курсы — нужно, чтобы заработало быстро</div>
-      <div class="audience-item">Вы чувствуете, что используете 5% возможностей — и хотите больше</div>
-      <div class="audience-item">Вы хотите, чтобы кто-то просто сел рядом и всё сделал вместе с вами</div>
+      <div class="audience-item">Пробовали ChatGPT пару раз, но не поняли, как встроить в работу</div>
+      <div class="audience-item">Некогда проходить двухмесячные курсы — нужно, чтобы заработало быстро</div>
+      <div class="audience-item">Чувствуете, что используете 5% возможностей — и хотите больше</div>
+      <div class="audience-item">Хотите, чтобы кто-то просто сел рядом и всё сделал вместе</div>
     </div>
     <div class="audience-col no">
-      <h3>✕ Вам не подойдёт, если</h3>
-      <div class="audience-item">Вы уже активно используете AI каждый день: у вас свои агенты, автоматизации, промт-системы</div>
-      <div class="audience-item">Вы ищете продвинутую прокачку навыков работы с AI — это не про глубину, а про вход</div>
-      <div class="audience-item">Вам нужна корпоративная программа внедрения AI для всей компании</div>
-      <div class="audience-item">Вы хотите научиться программировать нейросети или обучать модели</div>
+      <h3>✕ Не подойдёт, если</h3>
+      <div class="audience-item">Уже активно используете AI каждый день: есть агенты, автоматизации, промт-системы</div>
+      <div class="audience-item">Ищете продвинутую прокачку навыков работы с AI — это не про глубину, а про вход</div>
+      <div class="audience-item">Нужна корпоративная программа внедрения AI для всей компании</div>
+      <div class="audience-item">Хотите научиться программировать нейросети или обучать модели</div>
     </div>
   </div>
-  <p class="audience-note">Это про вход и быструю интеграцию AI в вашу жизнь и работу — для тех, кто ещё не начал или только начинает.</p>
+  <p class="audience-note">Это про вход и быструю интеграцию AI в жизнь и работу — для тех, кто ещё не начал или только начинает.</p>
 </div></section>
 
 <section class="how-price"><div class="container">
   <h2 class="how-title">Как это устроено</h2>
   <div class="how-steps">
-    <div class="how-step"><div class="how-step-num">01 — ДО ВСТРЕЧИ</div><h3>Погружение в ваш контекст</h3><p>Разговариваем: как устроена ваша работа, где AI даст максимальный эффект, какие задачи хотите решать. Составляем план.</p></div>
-    <div class="how-step"><div class="how-step-num">02 — ~3 ЧАСА ВМЕСТЕ</div><h3>Встраиваю AI в вашу жизнь</h3><p>Собираем персональную AI-среду: инструменты, доступы, пространства, сценарии — всё на ваших реальных задачах. Решаем все барьеры.</p></div>
-    <div class="how-step"><div class="how-step-num">03 — 2 НЕДЕЛИ</div><h3>Довожу до привычки</h3><p>На связи в мессенджере: новые сценарии, вопросы, доработки. Пока AI не станет естественной частью вашей рутины.</p></div>
+    <div class="how-step"><div class="how-step-num">01 — ДО ВСТРЕЧИ</div><h3>Погружение в контекст</h3><p>Разговариваем: как устроена работа, где AI даст максимальный эффект, какие задачи хотите решать. Составляем план.</p></div>
+    <div class="how-step"><div class="how-step-num">02 — ~3 ЧАСА ВМЕСТЕ</div><h3>Встраиваю AI в жизнь</h3><p>Собираем персональную AI-среду: инструменты, доступы, пространства, сценарии — всё на реальных задачах. Решаем все барьеры.</p></div>
+    <div class="how-step"><div class="how-step-num">03 — 2 НЕДЕЛИ</div><h3>Довожу до привычки</h3><p>На связи в мессенджере: новые сценарии, вопросы, доработки. Пока AI не станет естественной частью рутины.</p></div>
   </div>
   <div class="price-box">
     <div style="font-size:0.84rem;color:var(--text-dim)">Стоимость</div>
     <div class="price-num">50 000 <span>₽</span></div>
     <div class="price-sub">Один день работы + две недели сопровождения</div>
     <div class="price-list">
-      <div class="price-list-item"><span class="ch">✓</span> Глубокое погружение в ваши задачи и процессы</div>
-      <div class="price-list-item"><span class="ch">✓</span> Персональная AI-среда: 10+ инструментов под вас</div>
+      <div class="price-list-item"><span class="ch">✓</span> Глубокое погружение в задачи и процессы</div>
+      <div class="price-list-item"><span class="ch">✓</span> Персональная AI-среда: 10+ инструментов</div>
       <div class="price-list-item"><span class="ch">✓</span> Решение всех барьеров: доступ, оплаты, ограничения</div>
-      <div class="price-list-item"><span class="ch">✓</span> Совместная работа на ваших реальных задачах</div>
+      <div class="price-list-item"><span class="ch">✓</span> Совместная работа на реальных задачах</div>
       <div class="price-list-item"><span class="ch">✓</span> Две недели персонального сопровождения</div>
     </div>
     <a href="https://t.me/KachalkinPRO" target="_blank" class="btn-primary" style="width:100%;justify-content:center;border-radius:12px">Написать в мессенджер →</a>
-    <div class="price-note">В стоимость не входят платные подписки на сервисы — их вы оплачиваете сами.<br>Все мои знания, опыт и инструменты — включены.</div>
+    <div class="price-note">В стоимость не входят платные подписки на сервисы — оплачиваются отдельно.<br>Все знания, опыт и инструменты — включены.</div>
   </div>
 </div></section>
 
@@ -401,40 +380,26 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
 </div></section>
 
 <footer><div class="container">
-  <p style="color:var(--text-dim);font-size:0.86rem;margin-bottom:12px;">Ну и как вы понимаете, этот сайт я тоже сделал с помощью AI )</p>
+  <p style="color:var(--text-dim);font-size:0.86rem;margin-bottom:12px;">Ну и как вы понимаете, этот сайт тоже сделан с помощью AI )</p>
   <p>© 2026 Михаил Качалкин · Встраиваю AI в жизнь руководителей и экспертов</p>
 </div></footer>
 
 <script>
 function toggleTheme() {
-  var html = document.documentElement;
-  var current = html.getAttribute('data-theme');
-  html.setAttribute('data-theme', current === 'light' ? '' : 'light');
-  try { localStorage.setItem('theme', current === 'light' ? 'dark' : 'light'); } catch(e) {}
+  var h = document.documentElement, c = h.getAttribute('data-theme');
+  h.setAttribute('data-theme', c === 'light' ? '' : 'light');
+  try { localStorage.setItem('theme', c === 'light' ? 'dark' : 'light'); } catch(e) {}
 }
-try {
-  var saved = localStorage.getItem('theme');
-  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-} catch(e) {}
+try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch(e) {}
 
 function shareThis() {
-  var url = window.location.href;
-  var text = 'Посмотри — Михаил Качалкин встраивает AI в жизнь за один день';
-  if (navigator.share) {
-    navigator.share({ title: 'Встраиваю AI в жизнь', text: text, url: url });
-  } else {
-    navigator.clipboard.writeText(url).then(function() {
-      var btn = document.getElementById('share-btn');
-      btn.textContent = '✓ Ссылка скопирована';
-      btn.style.borderColor = 'rgba(0,201,167,0.4)';
-      btn.style.color = '#00c9a7';
-      setTimeout(function() {
-        btn.textContent = 'Переслать другу';
-        btn.style.borderColor = '';
-        btn.style.color = '';
-      }, 2000);
-    });
-  }
+  var u = window.location.href, t = 'Посмотри — Михаил Качалкин встраивает AI в жизнь за один день';
+  if (navigator.share) { navigator.share({ title: 'Встраиваю AI в жизнь', text: t, url: u }); }
+  else { navigator.clipboard.writeText(u).then(function() {
+    var b = document.getElementById('share-btn');
+    b.textContent = '✓ Ссылка скопирована'; b.style.borderColor = 'rgba(0,201,167,0.4)'; b.style.color = '#00c9a7';
+    setTimeout(function() { b.textContent = 'Переслать другу'; b.style.borderColor = ''; b.style.color = ''; }, 2000);
+  }); }
 }
 </script>
 </body>
