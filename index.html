@@ -217,7 +217,7 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
   <div class="nav-logo">МИХАИЛ КАЧАЛКИН</div>
   <div class="nav-right">
     <a href="https://t.me/KachalkinPRO" target="_blank" class="nav-cta">Написать</a>
-    <div class="theme-toggle" onclick="toggleTheme()" title="Переключить тему">
+    <div class="theme-toggle" id="theme-toggle" title="Переключить тему">
       <span class="theme-icon moon">🌙</span>
       <span class="theme-icon sun">☀️</span>
     </div>
@@ -259,19 +259,20 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
   </div>
   <div class="divider"></div>
   <div class="story-block">
-    <h2>Что происходит</h2>
-    <p>Сажусь рядом с человеком — или подключаюсь онлайн — и <strong>за один день встраиваю AI в его жизнь</strong>. Не учу теории. Не читаю лекций. А погружаюсь в то, как устроена его работа, какие задачи решает каждый день — и собираю под это <strong>персональную AI-среду</strong>.</p>
-    <p>Вместе разбираемся, где AI даст максимальный эффект. Вместе делаем первые проекты на реальных задачах. Вместе выстраиваем сценарии, пространства, привычки. А потом ещё <strong>две недели на связи</strong> — пока AI не станет естественной частью рутины.</p>
-    <p>Результат — <strong>экономия часов каждую неделю</strong>, рост продуктивности и новый уровень работы с информацией. Без найма ассистентов, без месяцев обучения.</p>
+    <h2>Как всё будет происходить</h2>
+    <p>Сажусь рядом с вами — или подключаюсь онлайн — и <strong>за один день встраиваю AI в вашу жизнь и рабочие процессы</strong>. Не учу теории. Не читаю лекций. А погружаюсь в то, как устроена работа LLM, какие задачи решает и как, как с ним общаться, чтобы был нужный вам результат — и собираю под это <strong>персональную AI-среду</strong>.</p>
+    <p>Вместе разбираемся, <strong>какие LLM-модели и дополнительные сервисы</strong> (транскрибинг, автоматизация промтов, хранилища, сервисы обхода барьеров и другие) вам нужны и как AI даст максимальный эффект. Вместе делаем первые проекты на реальных задачах. Вместе выстраиваем сценарии, пространства, привычки и <strong>формируем язык коммуникации</strong>. А потом ещё <strong>две недели на связи</strong> — пока AI не станет естественной частью вашей рутины.</p>
+    <p>Результат — <strong>экономия часов работы каждую неделю</strong>, рост продуктивности и новый уровень работы с информацией, документами, презентациями, таблицами и контентом. Без найма человека-ассистента, без месяцев обучения и покупки сомнительных сервисов (используем то, что точно работает).</p>
     <p style="color:var(--text-muted);font-size:0.9rem;margin-top:24px;margin-bottom:12px;">На чём это работает в реальной жизни:</p>
     <div class="usecase-tags">
       <span class="uc-tag">🎙 Расшифровка совещаний</span>
       <span class="uc-tag">📊 Сборка презентаций</span>
-      <span class="uc-tag">📝 Подготовка КП за минуты</span>
+      <span class="uc-tag">📝 Подготовка КП из брифа с клиентом</span>
       <span class="uc-tag">🔍 Исследования и аналитика</span>
-      <span class="uc-tag">📅 Работа с календарём</span>
-      <span class="uc-tag">🌐 Прототипы сайтов</span>
+      <span class="uc-tag">📋 Протоколы совещаний и переговоров</span>
+      <span class="uc-tag">🌐 Мини-приложения под ваши задачи</span>
       <span class="uc-tag">👥 Анализ конкурентов</span>
+      <span class="uc-tag">📅 Работа с календарём</span>
       <span class="uc-tag">✍️ Тексты и контент</span>
     </div>
     <p style="color:var(--text-muted);font-size:0.8rem;margin-top:14px;">AI будет везде — на телефоне, ноутбуке, в мессенджерах, в браузере.</p>
@@ -364,7 +365,7 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
     <h2>Выберите удобный<br>способ связи</h2>
     <div class="cta-buttons">
       <a href="https://t.me/KachalkinPRO" target="_blank" class="cta-btn cta-btn-accent">Написать в мессенджер</a>
-      <a href="/cdn-cgi/l/email-protection#264b4f4d43084a4a4b0840474b4f554e4342141213000510121d474a434347550845494b" class="cta-btn">Написать на почту</a>
+      <a href="mailto:mike.llm.famished245&#64;aleeas.com" class="cta-btn">Написать на почту</a>
       <a href="#" class="cta-btn" onclick="shareThis();return false;" id="share-btn">Переслать другу</a>
     </div>
   </div>
@@ -375,17 +376,44 @@ footer p { font-size: 0.76rem; color: var(--text-muted); }
   <p>© 2026 Михаил Качалкин · Встраиваю AI в работу и жизнь руководителей и экспертов</p>
 </div></footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function toggleTheme() {
-  var h = document.documentElement, c = h.getAttribute('data-theme');
-  h.setAttribute('data-theme', c === 'light' ? '' : 'light');
-  try { localStorage.setItem('theme', c === 'light' ? 'dark' : 'light'); } catch(e) {}
-}
-try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch(e) {}
+<script>
+(function() {
+  // Theme toggle
+  var toggle = document.getElementById('theme-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', function() {
+      var h = document.documentElement;
+      var c = h.getAttribute('data-theme');
+      h.setAttribute('data-theme', c === 'light' ? '' : 'light');
+      try { localStorage.setItem('theme', c === 'light' ? 'dark' : 'light'); } catch(e) {}
+    });
+  }
+  try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch(e) {}
 
-function shareThis() {
-  var u = window.location.href, t = 'Посмотри — Михаил Качалкин встраивает AI в работу и жизнь за один день';
-  if (navigator.share) { navigator.share({ title: 'Встраиваю AI в работу и жизнь', text: t, url: u }); }
-  else { navigator.clipboard.writeText(u).then(function() {
-    var b = document.getElementById('share-btn');
-    b.textContent = '✓ Ссылка скопирована'; b.style.borderColor = 'rgba(0,201,167,0.4)'; b.style.color = '#00c9a7';
+  // Share
+  var shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var u = window.location.href;
+      var t = 'Встраиваю AI в работу и жизнь за один день';
+      if (navigator.share) {
+        navigator.share({ title: t, text: t, url: u });
+      } else {
+        navigator.clipboard.writeText(u).then(function() {
+          shareBtn.textContent = '\u2713 Ссылка скопирована';
+          shareBtn.style.borderColor = 'rgba(0,201,167,0.4)';
+          shareBtn.style.color = '#00c9a7';
+          setTimeout(function() {
+            shareBtn.textContent = 'Переслать другу';
+            shareBtn.style.borderColor = '';
+            shareBtn.style.color = '';
+          }, 2000);
+        });
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
